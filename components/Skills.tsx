@@ -8,6 +8,7 @@ interface ISKillsProps {
 
 export const Skills: NextPage<ISKillsProps> = ({ skills }) => {
   const languages = skills?.filter(skill => skill?.fieldType?.toLowerCase() === SKILLSET.LANGUAGES);
+  console.log(languages)
   const frontend = skills?.filter(skill => skill?.fieldType?.toLowerCase() === SKILLSET.FRONTEND);
   const uilibraries = skills?.filter(skill => skill?.fieldType?.toLowerCase() === SKILLSET.UI_LIBRARIES);
   //const headlessCms = skills?.filter(skill => skill?.fieldType?.toLowerCase() === SKILLSET.HEADLESS_CMS);

@@ -153,7 +153,6 @@ export const getStaticProps: GetStaticProps = async () => {
     // Fetching skills data from REST API
     const skillsRes = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}${SKILLS_API}`);
     const skills: ISkills[] = await skillsRes.json();
-    console.log(skills);
 
     // Fetching projects data from REST API
     const projectsRes = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}${PROJECTS_API}`);

@@ -10,9 +10,9 @@ export const About: NextPage = () => {
       <div className="about_left">
         <h1 className="about_left_head">Hi, I&apos;m Sanskar Dewangan</h1>
         <p className="about_left_text">
-          Hi! I am Sanskar Dewangan from Bhilai, Chhattisgarh. I am Computer Science Engineering Graduate with minors
-          in Cyber Security. I am passionate about writing clean, efficient and optimized code. I wrote my First Program
-          in C++ in 2012.
+        I am a dedicated 4th-year student pursuing a Bachelor of Engineering in Computer Science (B.E. in CSE), expected to graduate in [05, 2025].<br/>
+        With a strong foundation in programming and software development, I am eager to showcase my skills and projects that reflect my commitment to excellence and innovation.
+         I am looking for opportunities that allow me to contribute to impactful projects and grow as a tech professional.
         </p>
         <div className="about_left_socialMedia">
           <img src={github.src} alt="" onClick={() => window.open("https://github.com/SanskarDewangan", "_blank")} />

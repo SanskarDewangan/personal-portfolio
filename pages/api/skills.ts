@@ -59,6 +59,14 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         fieldType: "frontend", 
         image: { url: "/images/router.webp" } 
       },
+      { uniqueId: 8, 
+        skill: "SASS (SCSS)",
+        id: "5008",
+        proficient: true, 
+        url: "", 
+        fieldType: "frontend", 
+        image: { url: "/images/sass.webp" } 
+      },
       //Ui Libraries
       { uniqueId: 51, 
         skill: "Tailwind CSS",
@@ -92,13 +100,22 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         url: "", 
         fieldType: "testing", 
         image: { url: "/images/git.webp" } 
-      },{ uniqueId: 202, 
+      },
+      { uniqueId: 202, 
         skill: "Postman",
         id: "2012",
         proficient: true, 
         url: "", 
         fieldType: "testing", 
         image: { url: "/images/postman.webp" } 
+      },
+      { uniqueId: 203, 
+        skill: "Appwrite",
+        id: "2013",
+        proficient: true, 
+        url: "", 
+        fieldType: "testing", 
+        image: { url: "/images/appwrite.png" } 
       },
       //familiar
       { uniqueId: 101, 
@@ -132,6 +149,14 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         url: "", 
         fieldType: "", 
         image: { url: "/images/mongodb.webp" } 
+      },
+      { uniqueId: 105, 
+        skill: "Drizzle ORM",
+        id: "1055",
+        proficient: false, 
+        url: "", 
+        fieldType: "", 
+        image: { url: "/images/drizzle.png" } 
       },
     ];
   

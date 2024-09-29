@@ -30,7 +30,7 @@ export const About: NextPage = () => {
         </div>
         <div
           className="about_left_starme"
-          onClick={() => window.open("https://github.com/SanskarDewangan/personal-webpage-v2", "_blank")}
+          onClick={() => window.open("https://github.com/SanskarDewangan/personal-portfolio", "_blank")}
         >
           ⭐ Star Me On Github
         </div>

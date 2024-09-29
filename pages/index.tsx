@@ -145,17 +145,17 @@ export default Home;
 
 
 // Example API endpoints for fetching skills and projects
-const SKILLS_API = 'http://localhost:3000/api/skills';
-const PROJECTS_API = 'http://localhost:3000/api/projects';
+const SKILLS_API = '/api/skills';
+const PROJECTS_API = '/api/projects';
 
 export const getStaticProps: GetStaticProps = async () => {
   try {
     // Fetching skills data from REST API
-    const skillsRes = await fetch(SKILLS_API);
+    const skillsRes = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}${SKILLS_API}`);
     const skills: ISkills[] = await skillsRes.json();
 
     // Fetching projects data from REST API
-    const projectsRes = await fetch(PROJECTS_API);
+    const projectsRes = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}${PROJECTS_API}`);
     const projects: IProjects[] = await projectsRes.json();
 
     // Return props along with revalidation setting

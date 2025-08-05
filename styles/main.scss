@@ -27,7 +27,7 @@ a {
   --toastify-toast-min-height: 80px;
   --toastify-font-family: "Circular Std";
 
-  --primary-accent: #234567; /* Deep Blue */
+  --primary-accent: #010048; /* Updated Deep Blue */
   --secondary-accent: #eab308; /* Gold */
   --background-one: #f5f7fa;
   --background-two: #ffffff;
@@ -44,19 +44,19 @@ a {
 }
 
 [data-theme="dark"] {
-  --primary-accent: #eab308;
-  --secondary-accent: #234567;
-  --background-one: #18181b;
-  --background-two: #232336;
-  --secondary-background-one: #232336;
-  --main-text-color: #f5f7fa;
-  --text-color-one: #f5f7fa;
-  --text-color-two: #a1a1aa;
-  --border-one: #27272a;
-  --about-profilepic-one: #232336;
-  --about-profilepic-two: #18181b;
-  --jobs-jobcard-background: #232336;
-  --skills-card-border: #232336;
+  --primary-accent: #010048;
+  --secondary-accent: #eab308;
+  --background-one: #0a0a0a;
+  --background-two: #1a1a1a;
+  --secondary-background-one: #2a2a2a;
+  --main-text-color: #ffffff;
+  --text-color-one: #ffffff;
+  --text-color-two: #d1d5db;
+  --border-one: #374151;
+  --about-profilepic-one: #2a2a2a;
+  --about-profilepic-two: #1a1a1a;
+  --jobs-jobcard-background: #1a1a1a;
+  --skills-card-border: #2a2a2a;
   --skills-card-shadow: #eab308;
 }
 
@@ -102,13 +102,14 @@ a {
 
 .scroll-up {
   @include imageSize(45px, 45px, contain);
-  @include borderWithRadius(2px solid #9c27b0, 50%);
+  @include borderWithRadius(2px solid var(--primary-accent), 50%);
   padding: 8px;
   position: fixed;
   bottom: 20px;
   right: 20px;
   z-index: 1000;
   cursor: pointer;
+  background: var(--background-two);
 }
 
 @import "./navbar";

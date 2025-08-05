@@ -2,17 +2,19 @@ import type { NextPage } from "next";
 import { useState } from "react";
 import Moon from "../assets/moon.webp";
 import Sun from "../assets/sun.webp";
-import { SECTION, THEME } from "../typings";
+import { SECTION } from "../typings";
 import Image from "next/image";
+import { useTheme } from "next-themes";
 
 interface INavbarProps {
   onNavItemClick: (item: string) => void;
-  switchTheme: () => void;
-  theme: string;
 }
 
-export const Navbar: NextPage<INavbarProps> = ({ onNavItemClick = () => {}, switchTheme = () => {}, theme }) => {
+export const Navbar: NextPage<INavbarProps> = ({ onNavItemClick = () => {} }) => {
   const [showSidebar, setShowSidebar] = useState<boolean>(false);
+  const { theme, setTheme } = useTheme();
+
+  const isLight = theme === "light" || !theme;
 
   return (
     <>
@@ -31,7 +33,14 @@ export const Navbar: NextPage<INavbarProps> = ({ onNavItemClick = () => {}, swit
 
         <p className="navbar_name">
           <span>Sanskar Dewangan</span>
-          <Image src={theme === THEME.LIGHT ? Sun.src : Moon.src} alt="Theme Icon" onClick={switchTheme} width={28} height={28} style={{ cursor: 'pointer' }} />
+          <Image
+            src={isLight ? Sun.src : Moon.src}
+            alt="Theme Icon"
+            onClick={() => setTheme(isLight ? "dark" : "light")}
+            width={28}
+            height={28}
+            style={{ cursor: 'pointer' }}
+          />
         </p>
         <div className="navbar_list">
           <p className="navbar_list_item" onClick={() => onNavItemClick(SECTION.ABOUT)}>

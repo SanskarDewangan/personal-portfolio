@@ -7,11 +7,9 @@ const typeDefs = gql`
   type Image {
     url: String!
   }
-
   type Tech {
     text: String!
   }
-
   type Project {
     id: String!
     title: String!
@@ -22,7 +20,6 @@ const typeDefs = gql`
     techStack: [Tech!]!
     image: Image!
   }
-
   type Skill {
     id: String!
     uniqueId: Int!
@@ -32,7 +29,6 @@ const typeDefs = gql`
     fieldType: String
     image: Image!
   }
-
   type Query {
     projects: [Project!]!
     skills: [Skill!]!
@@ -54,4 +50,12 @@ export const config = {
   },
 };
 
-export default apolloServer.createHandler({ path: '/api/graphql' });
+let apolloServerHandler: ReturnType<typeof apolloServer.createHandler> | null = null;
+
+export default async function handler(req, res) {
+  if (!apolloServerHandler) {
+    await apolloServer.start();
+    apolloServerHandler = apolloServer.createHandler({ path: '/api/graphql' });
+  }
+  return apolloServerHandler(req, res);
+}

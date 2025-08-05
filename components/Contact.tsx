@@ -4,14 +4,11 @@ import emailjs from "@emailjs/browser";
 import { ThreeDots } from "react-loader-spinner";
 import { toast } from "react-toastify";
 import Gmail from "../assets/gmail.webp";
-import { IFormData, THEME, Theme } from "../typings";
+import { IFormData } from "../typings";
 import Image from "next/image";
+import { useTheme } from "next-themes";
 
-interface IContactProps {
-  theme: Theme;
-}
-
-export const Contact: NextPage<IContactProps> = ({ theme }) => {
+export const Contact: NextPage = () => {
   const [formData, setFormData] = useState<IFormData>({
     name: { value: "", errorMessage: "" },
     email: { value: "", errorMessage: "" },
@@ -19,6 +16,7 @@ export const Contact: NextPage<IContactProps> = ({ theme }) => {
   });
   const [loading, setLoading] = useState<boolean>(false);
   const form = useRef<HTMLFormElement>(null);
+  const { theme } = useTheme();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: { value: e.target.value, errorMessage: "" } });
@@ -143,7 +141,7 @@ export const Contact: NextPage<IContactProps> = ({ theme }) => {
       ) : (
         <div className="contact_submission">
           <div className="contact_submission_head">Submitting Form Details</div>
-          <ThreeDots ariaLabel="loading-indicator" color={theme === THEME.LIGHT ? "#343e47" : "#ffffff"} />
+          <ThreeDots ariaLabel="loading-indicator" color={theme === "light" ? "#343e47" : "#ffffff"} />
           <div className="contact_submission_text">Please wait...</div>
         </div>
       )}

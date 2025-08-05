@@ -2,17 +2,19 @@ import type { NextPage, GetStaticProps } from "next";
 import Head from "next/head";
 import { useEffect, useRef, useState } from "react";
 import { ToastContainer } from "react-toastify";
-import { ISkills, IProjects, Theme, THEME, SECTION } from "../typings";
+import { ISkills, IProjects, SECTION } from "../typings";
 import { Navbar } from "../components/Navbar";
 import { About } from "../components/About";
 import { Projects } from "../components/Projects";
 import { Skills } from "../components/Skills";
 import { Contact } from "../components/Contact";
 import { Footer } from "../components/Footer";
+import { PerformanceDashboard } from "../components/PerformanceDashboard";
 import ScrollUp from "../assets/scrollup.webp";
 import client from "../lib/apolloClient";
 import { gql } from "@apollo/client";
 import Image from "next/image";
+import { AnimatedSection } from "../components/AnimatedSection";
 
 interface IHomeProps {
   projects: IProjects[];
@@ -23,13 +25,7 @@ const Home: NextPage<IHomeProps> = ({projects, skills }) => {
   const projectsRef = useRef<HTMLElement>(null);
   const skillsRef = useRef<HTMLElement>(null);
   const contactRef = useRef<HTMLElement>(null);
-  const [theme, setTheme] = useState<string>(THEME.LIGHT);
   const [isVisible, setIsVisible] = useState<boolean>(false);
-
-  useEffect(() => {
-    const theme = localStorage.getItem("themeValue");
-    setTheme(theme === THEME.LIGHT || !theme ? THEME.LIGHT : THEME.DARK);
-  }, []);
 
   useEffect(() => {
     const toggleVisibility = () => {
@@ -44,12 +40,6 @@ const Home: NextPage<IHomeProps> = ({projects, skills }) => {
 
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
-
-  const switchTheme = () => {
-    const newTheme = theme === THEME.LIGHT ? THEME.DARK : THEME.LIGHT;
-    localStorage.setItem("themeValue", newTheme);
-    setTheme(newTheme);
-  };
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -108,26 +98,40 @@ const Home: NextPage<IHomeProps> = ({projects, skills }) => {
         <link rel="icon" href="/favicon.png" />
       </Head>
 
-      <main data-theme={theme}>
-        <Navbar onNavItemClick={handleNavItemClick} switchTheme={switchTheme} theme={theme} />
+      <main>
+        <Navbar onNavItemClick={handleNavItemClick} />
 
-        <section className={SECTION.ABOUT}>
-          <About />
-        </section>
+        <AnimatedSection>
+          <section className={SECTION.ABOUT}>
+            <About />
+          </section>
+        </AnimatedSection>
 
-        <section className={SECTION.PROJECTS} ref={projectsRef}>
-          <Projects projects={projects} />
-        </section>
+        <AnimatedSection>
+          <PerformanceDashboard />
+        </AnimatedSection>
 
-        <section className={SECTION.SKILLS} ref={skillsRef}>
-          <Skills skills={skills} />
-        </section>
+        <AnimatedSection>
+          <section className={SECTION.PROJECTS} ref={projectsRef}>
+            <Projects projects={projects} />
+          </section>
+        </AnimatedSection>
 
-        <section className="contact" ref={contactRef}>
-          <Contact theme={theme as Theme} />
-        </section>
+        <AnimatedSection>
+          <section className={SECTION.SKILLS} ref={skillsRef}>
+            <Skills skills={skills} />
+          </section>
+        </AnimatedSection>
 
-        <Footer />
+        <AnimatedSection>
+          <section className="contact" ref={contactRef}>
+            <Contact />
+          </section>
+        </AnimatedSection>
+
+        <AnimatedSection>
+          <Footer />
+        </AnimatedSection>
 
         {isVisible && <Image src={ScrollUp.src} alt="Scroll Up" className="scroll-up" onClick={scrollToTop} width={40} height={40} style={{ cursor: 'pointer' }} />}
 

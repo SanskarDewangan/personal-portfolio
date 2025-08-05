@@ -5,6 +5,7 @@ import { ThreeDots } from "react-loader-spinner";
 import { toast } from "react-toastify";
 import Gmail from "../assets/gmail.webp";
 import { IFormData, THEME, Theme } from "../typings";
+import Image from "next/image";
 
 interface IContactProps {
   theme: Theme;
@@ -28,18 +29,18 @@ export const Contact: NextPage<IContactProps> = ({ theme }) => {
     const obj = { name: "", email: "", message: "" };
     const lettersregex = /^[a-zA-Z ]*$/;
     const mailregex = /^([_\-\.0-9a-zA-Z]+)@([_\-\.0-9a-zA-Z]+)\.([a-zA-Z]){2,7}$/;
-  
+
     // Validation logic (remains unchanged)
-  
+
     // Temporary form data to hold error messages
     const tempFormData = {
       name: { value: formData.name.value, errorMessage: obj.name },
       email: { value: formData.email.value, errorMessage: obj.email },
       message: { value: formData.message.value, errorMessage: obj.message },
     };
-  
+
     setFormData({ ...tempFormData });
-  
+
     // Check for errors before sending
     if (!obj.name && !obj.email && !obj.message) {
       // Reset form fields after successful submission
@@ -49,14 +50,14 @@ export const Contact: NextPage<IContactProps> = ({ theme }) => {
         message: { value: "", errorMessage: "" },
       });
       setLoading(true);
-  
+
       // Prepare data to send
       const formDataToSend = {
         from_name: formData.name.value,
         from_email: formData.email.value,
         message: formData.message.value,
       };
-  
+
       try {
         const response = await emailjs.send(
           process.env.NEXT_PUBLIC_SERVICE_ID!,
@@ -64,7 +65,7 @@ export const Contact: NextPage<IContactProps> = ({ theme }) => {
           formDataToSend,  // Use the prepared object here
           process.env.NEXT_PUBLIC_PUBLIC_KEY!
         );
-  
+
         if (response.status === 200) {
           setLoading(false);
           toast.success("Message Sent!");
@@ -76,13 +77,12 @@ export const Contact: NextPage<IContactProps> = ({ theme }) => {
       }
     }
   };
-  
 
   return (
     <>
       <h1 className="contact_heading">Contact Me</h1>
       <div className="contact_email">
-        <img src={Gmail.src} alt="" /> d.sanskar014@gmail.com
+        <Image src={Gmail.src} alt="Gmail" width={28} height={28} /> d.sanskar014@gmail.com
       </div>
       {!loading ? (
         <form className="contact_form" autoComplete="off" ref={form}>

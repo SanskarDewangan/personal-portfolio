@@ -3,6 +3,7 @@ import github from "../assets/github.webp";
 import linkedin from "../assets/linkedin.webp";
 import instagram from "../assets/instagram.webp";
 import gmail from "../assets/gmail.webp";
+import Image from "next/image";
 
 export const About: NextPage = () => {
   return (
@@ -15,18 +16,24 @@ export const About: NextPage = () => {
          I am looking for opportunities that allow me to contribute to impactful projects and grow as a tech professional.
         </p>
         <div className="about_left_socialMedia">
-          <img src={github.src} alt="" onClick={() => window.open("https://github.com/SanskarDewangan", "_blank")} />
-          <img
+          <Image src={github.src} alt="Github" onClick={() => window.open("https://github.com/SanskarDewangan", "_blank")} width={28} height={28} style={{ cursor: 'pointer' }} />
+          <Image
             src={linkedin.src}
-            alt=""
+            alt="Linkedin"
             onClick={() => window.open("https://www.linkedin.com/in/sanskar-dewangan/", "_blank")}
+            width={28}
+            height={28}
+            style={{ cursor: 'pointer' }}
           />
-          <img
+          <Image
             src={instagram.src}
-            alt=""
+            alt="Instagram"
             onClick={() => window.open("https://www.instagram.com/ig.sanskar_dewangan/", "_blank")}
+            width={28}
+            height={28}
+            style={{ cursor: 'pointer' }}
           />
-          <img src={gmail.src} alt="" onClick={() => window.open("mailto:d.sanskar014@gmail.com", "_blank")} />
+          <Image src={gmail.src} alt="Gmail" onClick={() => window.open("mailto:d.sanskar014@gmail.com", "_blank")} width={28} height={28} style={{ cursor: 'pointer' }} />
         </div>
         <div
           className="about_left_starme"

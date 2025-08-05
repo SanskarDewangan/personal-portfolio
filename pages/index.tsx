@@ -10,6 +10,9 @@ import { Skills } from "../components/Skills";
 import { Contact } from "../components/Contact";
 import { Footer } from "../components/Footer";
 import ScrollUp from "../assets/scrollup.webp";
+import client from "../lib/apolloClient";
+import { gql } from "@apollo/client";
+import Image from "next/image";
 
 interface IHomeProps {
   projects: IProjects[];
@@ -126,7 +129,7 @@ const Home: NextPage<IHomeProps> = ({projects, skills }) => {
 
         <Footer />
 
-        {isVisible && <img src={ScrollUp.src} alt="" className="scroll-up" onClick={scrollToTop} />}
+        {isVisible && <Image src={ScrollUp.src} alt="Scroll Up" className="scroll-up" onClick={scrollToTop} width={40} height={40} style={{ cursor: 'pointer' }} />}
 
         <ToastContainer
           position="top-right"
@@ -143,33 +146,42 @@ const Home: NextPage<IHomeProps> = ({projects, skills }) => {
 
 export default Home;
 
-
-// Example API endpoints for fetching skills and projects
-const SKILLS_API = '/api/skills';
-const PROJECTS_API = '/api/projects';
+const PROJECTS_AND_SKILLS_QUERY = gql`
+  query GetProjectsAndSkills {
+    projects {
+      id
+      title
+      uniqueId
+      description
+      demoLink
+      githubLink
+      techStack { text }
+      image { url }
+    }
+    skills {
+      id
+      uniqueId
+      proficient
+      skill
+      url
+      fieldType
+      image { url }
+    }
+  }
+`;
 
 export const getStaticProps: GetStaticProps = async () => {
   try {
-    // Fetching skills data from REST API
-    const skillsRes = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}${SKILLS_API}`);
-    const skills: ISkills[] = await skillsRes.json();
-
-    // Fetching projects data from REST API
-    const projectsRes = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}${PROJECTS_API}`);
-    const projects: IProjects[] = await projectsRes.json();
-
-    // Return props along with revalidation setting
+    const { data } = await client.query({ query: PROJECTS_AND_SKILLS_QUERY });
     return {
       props: {
-        skills,
-        projects,
+        skills: data.skills,
+        projects: data.projects,
       },
-      revalidate: 10, // Revalidate the page every 10 seconds
+      revalidate: 10,
     };
   } catch (error) {
     console.error('Error fetching data:', error);
-
-    // Handle error and return fallback props if needed
     return {
       props: {
         skills: [] as ISkills[],

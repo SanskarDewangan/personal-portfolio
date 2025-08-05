@@ -3,6 +3,7 @@ import { IProjects, TECHSTACK } from "../typings";
 import Github from "../assets/github.webp";
 import Web from "../assets/www.webp";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 interface IProjectsProps {
   projects: IProjects[];
@@ -70,7 +71,7 @@ export const Projects: NextPage<IProjectsProps> = ({ projects }) => {
         <div className="projects_filter_cardsBox">
           {filteredProjects?.map(project => (
             <div key={project?.id} className="projects_filter_cardsBox_card">
-              <img src={project?.image?.url} alt="" className="projects_filter_cardsBox_card_img" />
+              <Image src={project?.image?.url} alt={project?.title} className="projects_filter_cardsBox_card_img" width={400} height={250} />
               <p className="projects_filter_cardsBox_card_title">{project?.title}</p>
               <div className="projects_filter_cardsBox_card_techStack">
                 {project?.techStack?.map(stack => {
@@ -85,14 +86,17 @@ export const Projects: NextPage<IProjectsProps> = ({ projects }) => {
               </div>
               <p className="projects_filter_cardsBox_card_description">{project?.description}</p>
               <div className="projects_filter_cardsBox_card_links">
-                <img
+                <Image
                   src={Github.src}
-                  alt=""
+                  alt="Github"
                   onClick={() => window.open(project?.githubLink, "_blank")}
                   className={`${project?.demoLink && "margin-right"}`}
+                  width={32}
+                  height={32}
+                  style={{ cursor: 'pointer' }}
                 />
                 {project?.demoLink && (
-                  <img src={Web.src} alt="" onClick={() => window.open(project?.demoLink, "_blank")} />
+                  <Image src={Web.src} alt="Demo" onClick={() => window.open(project?.demoLink, "_blank")} width={32} height={32} style={{ cursor: 'pointer' }} />
                 )}
               </div>
             </div>

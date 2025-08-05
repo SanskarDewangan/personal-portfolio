@@ -12,8 +12,8 @@
       margin-bottom: 50px;
 
       &_item {
-        @include sectionLayout(8px 16px, #edf2f8);
-        @include borderWithRadius(1px solid #9c27b0, 8px);
+        @include sectionLayout(8px 16px, var(--background-one));
+        @include borderWithRadius(1px solid var(--primary-accent), 8px);
         margin-right: 15px;
         margin-bottom: 10px;
         font-size: 14px;
@@ -23,7 +23,7 @@
       }
 
       &_item:hover {
-        @include colorWithBackground(#ffffff, #9c27b0);
+        @include colorWithBackground(var(--background-two), var(--primary-accent));
       }
     }
 
@@ -34,7 +34,7 @@
 
       &_card {
         @include sectionLayout(15px, var(--secondary-background-one));
-        @include borderWithRadius(1px solid #6b7688, 10px);
+        @include borderWithRadius(1px solid var(--primary-accent), 10px);
         width: 250px;
         text-align: center;
         transition: all 0.3s;
@@ -60,12 +60,12 @@
           margin-bottom: 15px;
 
           &_tech {
-            @include borderWithRadius(1px solid #9c27b0, 5px);
+            @include borderWithRadius(1px solid var(--secondary-accent), 5px);
             display: inline-flex;
             margin: 3px 5px 3px -1px;
             font-size: 12px;
             padding: 4px;
-            color: #9c27b0;
+            color: var(--secondary-accent);
             font-weight: 600;
           }
         }
@@ -74,7 +74,7 @@
           margin-top: 20px;
           img {
             @include imageSize(35px, 35px, contain);
-            @include borderWithRadius(1px solid #6b7688, 50%);
+            @include borderWithRadius(1px solid var(--primary-accent), 50%);
             cursor: pointer;
             transition: all 0.5s;
           }
@@ -86,16 +86,14 @@
       }
 
       &_card:hover {
-        box-shadow: 0 2px 10px #6b7688;
+        box-shadow: 0 2px 10px var(--primary-accent);
       }
     }
   }
 }
-
 .margin-right {
   margin-right: 50px;
 }
-
 .activeTag {
-  @include colorWithBackground(#ffffff, #9c27b0);
+  @include colorWithBackground(var(--background-two), var(--primary-accent));
 }

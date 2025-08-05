@@ -3,6 +3,7 @@ import { useState } from "react";
 import Moon from "../assets/moon.webp";
 import Sun from "../assets/sun.webp";
 import { SECTION, THEME } from "../typings";
+import Image from "next/image";
 
 interface INavbarProps {
   onNavItemClick: (item: string) => void;
@@ -30,7 +31,7 @@ export const Navbar: NextPage<INavbarProps> = ({ onNavItemClick = () => {}, swit
 
         <p className="navbar_name">
           <span>Sanskar Dewangan</span>
-          <img src={theme === THEME.LIGHT ? Sun.src : Moon.src} alt="" onClick={switchTheme} />
+          <Image src={theme === THEME.LIGHT ? Sun.src : Moon.src} alt="Theme Icon" onClick={switchTheme} width={28} height={28} style={{ cursor: 'pointer' }} />
         </p>
         <div className="navbar_list">
           <p className="navbar_list_item" onClick={() => onNavItemClick(SECTION.ABOUT)}>

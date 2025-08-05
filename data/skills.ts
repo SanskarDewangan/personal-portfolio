@@ -1,0 +1,21 @@
+export const skills = [
+  { uniqueId: 1, skill: "CPP", id: "5001", proficient: true, url: "", fieldType: "languages", image: {url: "/images/cpp.webp"} },
+  { uniqueId: 2, skill: "JavaScript", id: "5002", proficient: true, url: "", fieldType: "languages", image: { url: "/images/js.webp" } },
+  { uniqueId: 3, skill: "TypeScript", id: "5003", proficient: true, url: "", fieldType: "languages", image: { url: "/images/ts.webp" } },
+  { uniqueId: 4, skill: "React", id: "5004", proficient: true, url: "", fieldType: "frontend", image: { url: "/images/react.webp" } },
+  { uniqueId: 5, skill: "Redux", id: "5005", proficient: true, url: "", fieldType: "frontend", image: { url: "/images/redux.webp" } },
+  { uniqueId: 6, skill: "Nextjs", id: "5006", proficient: true, url: "", fieldType: "frontend", image: { url: "/images/react.webp" } },
+  { uniqueId: 7, skill: "React Router", id: "5007", proficient: true, url: "", fieldType: "frontend", image: { url: "/images/router.webp" } },
+  { uniqueId: 8, skill: "SASS (SCSS)", id: "5008", proficient: true, url: "", fieldType: "frontend", image: { url: "/images/sass.webp" } },
+  { uniqueId: 51, skill: "Tailwind CSS", id: "5008", proficient: true, url: "", fieldType: "uilibraries", image: { url: "/images/tailwind.webp" } },
+  { uniqueId: 52, skill: "Shadcn", id: "5009", proficient: true, url: "", fieldType: "uilibraries", image: { url: "/images/shadcn.webp" } },
+  { uniqueId: 53, skill: "React Hook Form", id: "5010", proficient: true, url: "", fieldType: "", image: { url: "/images/rhf.webp" } },
+  { uniqueId: 201, skill: "Git", id: "2011", proficient: true, url: "", fieldType: "testing", image: { url: "/images/git.webp" } },
+  { uniqueId: 202, skill: "Postman", id: "2012", proficient: true, url: "", fieldType: "testing", image: { url: "/images/postman.webp" } },
+  { uniqueId: 203, skill: "Appwrite", id: "2013", proficient: true, url: "", fieldType: "testing", image: { url: "/images/appwrite.png" } },
+  { uniqueId: 101, skill: "MySQL", id: "1011", proficient: false, url: "", fieldType: "", image: { url: "/images/mysql.webp" } },
+  { uniqueId: 102, skill: "Express.js", id: "1022", proficient: false, url: "", fieldType: "", image: { url: "/images/express.webp" } },
+  { uniqueId: 103, skill: "Node.js", id: "1033", proficient: false, url: "", fieldType: "", image: { url: "/images/nodejs.webp" } },
+  { uniqueId: 104, skill: "MongoDB", id: "1044", proficient: false, url: "", fieldType: "", image: { url: "/images/mongodb.webp" } },
+  { uniqueId: 105, skill: "Drizzle ORM", id: "1055", proficient: false, url: "", fieldType: "", image: { url: "/images/drizzle.png" } }
+];

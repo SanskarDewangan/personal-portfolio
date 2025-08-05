@@ -27,33 +27,37 @@ a {
   --toastify-toast-min-height: 80px;
   --toastify-font-family: "Circular Std";
 
-  --background-one: #edf2f8;
+  --primary-accent: #234567; /* Deep Blue */
+  --secondary-accent: #eab308; /* Gold */
+  --background-one: #f5f7fa;
   --background-two: #ffffff;
-  --secondary-background-one: #edf2f8;
-  --main-text-color: #000000;
-  --text-color-one: #000000;
-  --text-color-two: #6b7688;
-  --border-one: #e2e6ec;
-  --about-profilepic-one: #edf2f8;
-  --about-profilepic-two: #e2e6ec;
+  --secondary-background-one: #f3f4f6;
+  --main-text-color: #22223b;
+  --text-color-one: #22223b;
+  --text-color-two: #6b7280;
+  --border-one: #e5e7eb;
+  --about-profilepic-one: #f5f7fa;
+  --about-profilepic-two: #e5e7eb;
   --jobs-jobcard-background: #ffffff;
   --skills-card-border: #ffffff;
-  --skills-card-shadow: #6b7688;
+  --skills-card-shadow: #eab308;
 }
 
 [data-theme="dark"] {
-  --background-one: #080808;
-  --background-two: #080808;
-  --secondary-background-one: #262626;
-  --main-text-color: #ffffff;
-  --text-color-one: #929397;
-  --text-color-two: #929397;
-  --border-one: #929397;
-  --about-profilepic-one: #3a3a3a;
-  --about-profilepic-two: #3a3a3a;
-  --jobs-jobcard-background: #191919;
-  --skills-card-border: #6b7688;
-  --skills-card-shadow: #ffffff;
+  --primary-accent: #eab308;
+  --secondary-accent: #234567;
+  --background-one: #18181b;
+  --background-two: #232336;
+  --secondary-background-one: #232336;
+  --main-text-color: #f5f7fa;
+  --text-color-one: #f5f7fa;
+  --text-color-two: #a1a1aa;
+  --border-one: #27272a;
+  --about-profilepic-one: #232336;
+  --about-profilepic-two: #18181b;
+  --jobs-jobcard-background: #232336;
+  --skills-card-border: #232336;
+  --skills-card-shadow: #eab308;
 }
 
 @mixin imageSize($width, $height, $fit) {

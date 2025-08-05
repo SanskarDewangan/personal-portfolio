@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import { ISkills } from "../typings";
+import Image from "next/image";
 
 interface ISkillProps {
   skills: ISkills[];
@@ -17,7 +18,7 @@ export const Skill: NextPage<ISkillProps> = ({ skills, skill }) => {
             className="skills_box_container_row_card"
             onClick={() => window.open(skill?.url, "_blank")}
           >
-            <img src={skill?.image?.url} alt="" />
+            <Image src={skill?.image?.url} alt={skill?.skill} width={48} height={48} />
             <p>{skill?.skill}</p>
           </div>
         ))}

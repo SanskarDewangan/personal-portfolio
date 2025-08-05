@@ -111,23 +111,23 @@ const Home: NextPage<IHomeProps> = ({projects, skills }) => {
           <PerformanceDashboard />
         </AnimatedSection>
 
-        <AnimatedSection>
-          <section className={SECTION.PROJECTS} ref={projectsRef}>
+        <section className={SECTION.PROJECTS} ref={projectsRef}>
+          <AnimatedSection>
             <Projects projects={projects} />
-          </section>
-        </AnimatedSection>
+          </AnimatedSection>
+        </section>
 
-        <AnimatedSection>
-          <section className={SECTION.SKILLS} ref={skillsRef}>
+        <section className={SECTION.SKILLS} ref={skillsRef}>
+          <AnimatedSection>
             <Skills skills={skills} />
-          </section>
-        </AnimatedSection>
+          </AnimatedSection>
+        </section>
 
-        <AnimatedSection>
-          <section className="contact" ref={contactRef}>
+        <section className="contact" ref={contactRef}>
+          <AnimatedSection>
             <Contact />
-          </section>
-        </AnimatedSection>
+          </AnimatedSection>
+        </section>
 
         <AnimatedSection>
           <Footer />

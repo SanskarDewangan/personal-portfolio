@@ -60,7 +60,7 @@
         @include borderWithRadius(none, 10px);
         text-align: center;
         outline: none;
-        color: var(--secondary-accent);
+        color: light-dark(white, black);
         font-size: 18px;
         cursor: pointer;
         max-width: 120px;

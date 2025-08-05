@@ -2,11 +2,12 @@ import type { NextPage, GetStaticProps } from "next";
 import Head from "next/head";
 import { useEffect, useRef, useState } from "react";
 import { ToastContainer } from "react-toastify";
-import { ISkills, IProjects, SECTION } from "../typings";
+import { ISkills, IProjects, IJobs, SECTION } from "../typings";
 import { Navbar } from "../components/Navbar";
 import { About } from "../components/About";
 import { Projects } from "../components/Projects";
 import { Skills } from "../components/Skills";
+import { Experience } from "../components/Experience";
 import { Contact } from "../components/Contact";
 import { Footer } from "../components/Footer";
 import { PerformanceDashboard } from "../components/PerformanceDashboard";
@@ -19,11 +20,13 @@ import { AnimatedSection } from "../components/AnimatedSection";
 interface IHomeProps {
   projects: IProjects[];
   skills: ISkills[];
+  jobs: IJobs[];
 }
 
-const Home: NextPage<IHomeProps> = ({projects, skills }) => {
+const Home: NextPage<IHomeProps> = ({projects, skills, jobs }) => {
   const projectsRef = useRef<HTMLElement>(null);
   const skillsRef = useRef<HTMLElement>(null);
+  const experienceRef = useRef<HTMLElement>(null);
   const contactRef = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
@@ -72,6 +75,13 @@ const Home: NextPage<IHomeProps> = ({projects, skills }) => {
         };
         break;
 
+      case SECTION.EXPERIENCE:
+        scrollObject = {
+          top: experienceRef.current?.offsetTop! - 70,
+          behavior: "smooth",
+        };
+        break;
+
       case SECTION.CONTACT:
         scrollObject = {
           top: contactRef.current?.offsetTop! - 70,
@@ -110,6 +120,12 @@ const Home: NextPage<IHomeProps> = ({projects, skills }) => {
         <AnimatedSection>
           <PerformanceDashboard />
         </AnimatedSection>
+
+        <section className="experience" ref={experienceRef}>
+          <AnimatedSection>
+            <Experience jobs={jobs} />
+          </AnimatedSection>
+        </section>
 
         <section className={SECTION.PROJECTS} ref={projectsRef}>
           <AnimatedSection>
@@ -150,8 +166,8 @@ const Home: NextPage<IHomeProps> = ({projects, skills }) => {
 
 export default Home;
 
-const PROJECTS_AND_SKILLS_QUERY = gql`
-  query GetProjectsAndSkills {
+const PROJECTS_SKILLS_AND_JOBS_QUERY = gql`
+  query GetProjectsSkillsAndJobs {
     projects {
       id
       title
@@ -171,16 +187,27 @@ const PROJECTS_AND_SKILLS_QUERY = gql`
       fieldType
       image { url }
     }
+    jobs {
+      id
+      company
+      designation
+      from
+      to
+      logo { url }
+      companyUrl
+      companyLinkedin
+    }
   }
 `;
 
 export const getStaticProps: GetStaticProps = async () => {
   try {
-    const { data } = await client.query({ query: PROJECTS_AND_SKILLS_QUERY });
+    const { data } = await client.query({ query: PROJECTS_SKILLS_AND_JOBS_QUERY });
     return {
       props: {
         skills: data.skills,
         projects: data.projects,
+        jobs: data.jobs,
       },
       revalidate: 10,
     };
@@ -190,6 +217,7 @@ export const getStaticProps: GetStaticProps = async () => {
       props: {
         skills: [] as ISkills[],
         projects: [] as IProjects[],
+        jobs: [] as IJobs[],
       },
     };
   }

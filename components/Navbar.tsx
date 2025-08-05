@@ -46,6 +46,9 @@ export const Navbar: NextPage<INavbarProps> = ({ onNavItemClick = () => {} }) =>
           <p className="navbar_list_item" onClick={() => onNavItemClick(SECTION.ABOUT)}>
             About
           </p>
+          <p className="navbar_list_item" onClick={() => onNavItemClick(SECTION.EXPERIENCE)}>
+            Experience
+          </p>
           <p className="navbar_list_item" onClick={() => onNavItemClick(SECTION.PROJECTS)}>
             Projects
           </p>
@@ -61,6 +64,9 @@ export const Navbar: NextPage<INavbarProps> = ({ onNavItemClick = () => {} }) =>
       <div className={showSidebar ? "sidebar active" : "sidebar"}>
         <p className="sidebar_item" onClick={() => onNavItemClick(SECTION.ABOUT)}>
           About
+        </p>
+        <p className="sidebar_item" onClick={() => onNavItemClick(SECTION.EXPERIENCE)}>
+          Experience
         </p>
         <p className="sidebar_item" onClick={() => onNavItemClick(SECTION.PROJECTS)}>
           Projects

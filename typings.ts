@@ -6,13 +6,25 @@ export interface IText {
   text: string;
 }
 
+export interface IFormFields {
+  name: string;
+  email: string;
+  message: string;
+}
+
+export interface IFormData {
+  name: string;
+  email: string;
+  message: string;
+}
+
 export interface ISkills {
   id: string;
   uniqueId: number;
   proficient: boolean;
   skill: string;
   url: string;
-  fieldType: string | null;
+  fieldType: string;
   image: IUrl;
 }
 
@@ -23,63 +35,60 @@ export interface IProjects {
   description: string;
   demoLink: string;
   githubLink: string;
-  techStack: Array<IText>;
+  techStack: IText[];
   image: IUrl;
 }
 
-export interface IFormFields {
-  value: string;
-  errorMessage: string;
-}
-export interface IFormData {
-  name: IFormFields;
-  email: IFormFields;
-  message: IFormFields;
-}
-
-export const THEME = {
-  LIGHT: "light",
-  DARK: "dark",
-};
-
-export type Theme = "light" | "dark";
-
-export enum Months {
-  Jan = 1,
-  Feb = 2,
-  Mar = 3,
-  Apr = 4,
-  May = 5,
-  Jun = 6,
-  Jul = 7,
-  Aug = 8,
-  Sep = 9,
-  Oct = 10,
-  Nov = 11,
-  Dec = 12,
+export interface IJobs {
+  id: string;
+  company: string;
+  designation: string;
+  from: string;
+  to?: string;
+  logo?: IUrl;
+  companyUrl?: string;
+  companyLinkedin?: string;
 }
 
-export const SKILLSET = {
-  LANGUAGES: "languages",
-  FRONTEND: "frontend",
-  UI_LIBRARIES: "uilibraries",
-  //HEADLESS_CMS: "headless cms",
-  TESTING: "testing",
-  TOOLS: "tools",
-};
+export interface IJobCardProps {
+  job: IJobs;
+  index: number;
+}
 
-export const TECHSTACK = {
-  ALL: "all",
-  CPP: "c++",
-  JAVASCRIPT: "javascript",
-  TYPESCRIPT: "typescript",
-  REACT: "react",
-  NEXTJS: "nextjs",
-};
+export enum THEME {
+  LIGHT = "light",
+  DARK = "dark",
+}
 
-export const SECTION = {
-  ABOUT: "about",
-  PROJECTS: "projects",
-  SKILLS: "skills",
-  CONTACT: "contact",
-};
+export enum SECTION {
+  ABOUT = "about",
+  PROJECTS = "projects",
+  SKILLS = "skills",
+  EXPERIENCE = "experience",
+  CONTACT = "contact",
+}
+
+export enum SKILLSET {
+  LANGUAGES = "languages",
+  FRONTEND = "frontend",
+  UI_LIBRARIES = "uilibraries",
+  TESTING = "testing",
+  TOOLS = "tools",
+}
+
+export enum TECHSTACK {
+  ALL = "all",
+  REACT = "React",
+  TYPESCRIPT = "TypeScript",
+  JAVASCRIPT = "JavaScript",
+  NODEJS = "Node.js",
+  NEXTJS = "Next.js",
+  TAILWIND = "Tailwind CSS",
+  SASS = "Sass",
+  GIT = "Git",
+  MONGODB = "MongoDB",
+  EXPRESS = "Express.js",
+  REDUX = "Redux",
+  APOLLO = "Apollo GraphQL",
+  CPP = "C++",
+}

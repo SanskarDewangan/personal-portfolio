@@ -1,5 +1,6 @@
 import { IJobs } from "../typings";
 
+// Array of job objects for the portfolio
 export const jobs: IJobs[] = [
   {
     id: "1",
@@ -10,4 +11,4 @@ export const jobs: IJobs[] = [
     companyLinkedin: "https://linkedin.com/company/weave"
   },
   
-]; 
+];

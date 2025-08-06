@@ -12,10 +12,15 @@ export interface IFormFields {
   message: string;
 }
 
+export interface IFormField {
+  value: string;
+  errorMessage: string;
+}
+
 export interface IFormData {
-  name: string;
-  email: string;
-  message: string;
+  name: IFormField;
+  email: IFormField;
+  message: IFormField;
 }
 
 export interface ISkills {

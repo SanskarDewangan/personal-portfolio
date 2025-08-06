@@ -12,7 +12,7 @@ Hi! I'm Sanskar Dewangan, a passionate software developer with a strong foundati
 ---
 
 ## 🛠️ Tech Stack
-- **Frontend:** React, Next.js, TypeScript, SCSS, Tailwind CSS
+- **Frontend:** React, Next.js, TypeScript, SCSS
 - **Backend:** Apollo Server (GraphQL), Node.js
 - **Tooling:** Apollo Client, ESLint, Prettier, EmailJS, React Toastify
 - **Performance:** Next.js Image Optimization, Modular SCSS, Code Splitting
@@ -50,6 +50,15 @@ Visit [http://localhost:3000](http://localhost:3000) to view your site.
 
 ### 4. **GraphQL Playground**
 Visit [http://localhost:3000/api/graphql](http://localhost:3000/api/graphql) to explore the GraphQL API.
+
+---
+
+## ⚡ Optimizations
+- **Removed unused REST API endpoints:** Eliminated redundant `/api/projects`, `/api/skills`, and `/api/jobs` endpoints
+- **Cleaned up dependencies:** Removed unused packages and properly organized dependencies vs devDependencies
+- **Asset optimization:** Removed unused images to reduce bundle size
+- **Code organization:** Improved component structure and reusability
+- **Performance monitoring:** Added interactive performance dashboard with real-time metrics
 
 ---
 

@@ -10,15 +10,27 @@ interface INavbarProps {
   onNavItemClick: (item: string) => void;
 }
 
+/**
+ * Navbar Component
+ * Displays navigation menu and theme toggle
+ *
+ * @param onNavItemClick - Function to handle navigation item clicks
+ */
 export const Navbar: NextPage<INavbarProps> = ({ onNavItemClick = () => {} }) => {
+  // State for sidebar visibility on mobile
   const [showSidebar, setShowSidebar] = useState<boolean>(false);
+  
+  // Theme context
   const { theme, setTheme } = useTheme();
 
+  // Check if current theme is light
   const isLight = theme === "light" || !theme;
 
   return (
     <>
+      {/* Main navigation bar */}
       <nav className="navbar">
+        {/* Mobile menu toggle */}
         <div className="menu">
           <input
             className="check"
@@ -31,6 +43,7 @@ export const Navbar: NextPage<INavbarProps> = ({ onNavItemClick = () => {} }) =>
           <div className={showSidebar ? "line line-3" : "line line3"}></div>
         </div>
 
+        {/* Name and theme toggle */}
         <p className="navbar_name">
           <span>Sanskar Dewangan</span>
           <Image
@@ -42,6 +55,8 @@ export const Navbar: NextPage<INavbarProps> = ({ onNavItemClick = () => {} }) =>
             style={{ cursor: 'pointer' }}
           />
         </p>
+        
+        {/* Desktop navigation items */}
         <div className="navbar_list">
           <p className="navbar_list_item" onClick={() => onNavItemClick(SECTION.ABOUT)}>
             About
@@ -61,6 +76,7 @@ export const Navbar: NextPage<INavbarProps> = ({ onNavItemClick = () => {} }) =>
         </div>
       </nav>
 
+      {/* Mobile sidebar */}
       <div className={showSidebar ? "sidebar active" : "sidebar"}>
         <p className="sidebar_item" onClick={() => onNavItemClick(SECTION.ABOUT)}>
           About

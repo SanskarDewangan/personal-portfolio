@@ -5,12 +5,19 @@ import Instagram from "../assets/instagram.webp";
 import Gmail from "../assets/gmail.webp";
 import Image from "next/image";
 
+/**
+ * Footer Component
+ * Displays copyright information and social media links
+ */
 export const Footer: NextPage = () => {
   return (
     <footer className="footer">
+      {/* Copyright information */}
       <div className="footer_copyright">
         <p className="footer_copyright_textOne">No &copy; copyright issues. </p>
       </div>
+      
+      {/* Social media links */}
       <div className="footer_socialMedia">
         <p>Connect with me !</p>
         <div className="footer_socialMedia_links">

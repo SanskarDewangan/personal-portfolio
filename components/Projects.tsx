@@ -9,10 +9,22 @@ interface IProjectsProps {
   projects: IProjects[];
 }
 
+/**
+ * Projects Component
+ * Displays projects with filtering by technology
+ *
+ * @param projects - Array of project objects
+ */
 export const Projects: NextPage<IProjectsProps> = ({ projects }) => {
+  // State for active filter tag
   const [activeTag, setActiveTag] = useState<string>(TECHSTACK.ALL);
+  
+  // State for filtered projects
   const [filteredProjects, setFilteredProjects] = useState<IProjects[]>([]);
 
+  /**
+   * Filter projects based on active tag
+   */
   useEffect(() => {
     if (activeTag === TECHSTACK.ALL) {
       setFilteredProjects(projects);
@@ -28,8 +40,12 @@ export const Projects: NextPage<IProjectsProps> = ({ projects }) => {
 
   return (
     <>
+      {/* Projects section heading */}
       <h1 className="projects_heading">Personal Projects</h1>
+      
+      {/* Projects filter and cards container */}
       <div className="projects_filter">
+        {/* Filter tags */}
         <div className="projects_filter_box">
           <div
             onClick={() => setActiveTag(TECHSTACK.ALL)}
@@ -68,11 +84,18 @@ export const Projects: NextPage<IProjectsProps> = ({ projects }) => {
             C++
           </div>
         </div>
+        
+        {/* Projects cards grid */}
         <div className="projects_filter_cardsBox">
           {filteredProjects?.map(project => (
             <div key={project?.id} className="projects_filter_cardsBox_card">
+              {/* Project image */}
               <Image src={project?.image?.url} alt={project?.title} className="projects_filter_cardsBox_card_img" width={400} height={250} />
+              
+              {/* Project title */}
               <p className="projects_filter_cardsBox_card_title">{project?.title}</p>
+              
+              {/* Project tech stack */}
               <div className="projects_filter_cardsBox_card_techStack">
                 {project?.techStack?.map(stack => {
                   if (stack?.text?.toLowerCase() !== TECHSTACK.ALL) {
@@ -84,7 +107,11 @@ export const Projects: NextPage<IProjectsProps> = ({ projects }) => {
                   }
                 })}
               </div>
+              
+              {/* Project description */}
               <p className="projects_filter_cardsBox_card_description">{project?.description}</p>
+              
+              {/* Project links */}
               <div className="projects_filter_cardsBox_card_links">
                 <Image
                   src={Github.src}

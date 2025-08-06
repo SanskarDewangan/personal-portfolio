@@ -8,7 +8,12 @@ interface PerformanceMetrics {
   uptime: number;
 }
 
+/**
+ * PerformanceDashboard Component
+ * Displays simulated performance metrics for the portfolio
+ */
 export const PerformanceDashboard: React.FC = () => {
+  // State for performance metrics
   const [metrics, setMetrics] = useState<PerformanceMetrics>({
     loadTime: 0,
     lighthouseScore: 0,
@@ -16,6 +21,9 @@ export const PerformanceDashboard: React.FC = () => {
     uptime: 0
   });
 
+  /**
+   * Effect to simulate performance metrics updates
+   */
   useEffect(() => {
     // Simulate performance metrics
     const simulateMetrics = () => {
@@ -32,6 +40,7 @@ export const PerformanceDashboard: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
+  // Metrics data for display
   const metricsData = [
     {
       label: 'Load Time',
@@ -73,8 +82,9 @@ export const PerformanceDashboard: React.FC = () => {
         border: '1px solid var(--border-one)'
       }}
     >
-      <h3 style={{ 
-        textAlign: 'center', 
+      {/* Dashboard heading */}
+      <h3 style={{
+        textAlign: 'center',
         marginBottom: '20px',
         color: 'var(--main-text-color)',
         fontSize: '18px',
@@ -83,6 +93,7 @@ export const PerformanceDashboard: React.FC = () => {
         🚀 Performance Metrics
       </h3>
       
+      {/* Metrics grid */}
       <div style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
@@ -102,18 +113,23 @@ export const PerformanceDashboard: React.FC = () => {
               border: `2px solid ${metric.color}20`
             }}
           >
+            {/* Metric icon */}
             <div style={{ fontSize: '24px', marginBottom: '5px' }}>
               {metric.icon}
             </div>
-            <div style={{ 
-              fontSize: '14px', 
+            
+            {/* Metric value */}
+            <div style={{
+              fontSize: '14px',
               fontWeight: '600',
               color: 'var(--main-text-color)',
               marginBottom: '5px'
             }}>
               {metric.value}
             </div>
-            <div style={{ 
+            
+            {/* Metric label */}
+            <div style={{
               fontSize: '12px',
               color: 'var(--text-color-two)'
             }}>
@@ -124,4 +140,4 @@ export const PerformanceDashboard: React.FC = () => {
       </div>
     </motion.div>
   );
-}; 
+};

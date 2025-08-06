@@ -9,38 +9,84 @@ import Image from "next/image";
 import { useTheme } from "next-themes";
 
 export const Contact: NextPage = () => {
+  // State for form data with validation
   const [formData, setFormData] = useState<IFormData>({
     name: { value: "", errorMessage: "" },
     email: { value: "", errorMessage: "" },
     message: { value: "", errorMessage: "" },
   });
+  
+  // Loading state for form submission
   const [loading, setLoading] = useState<boolean>(false);
+  
+  // Reference to the form element
   const form = useRef<HTMLFormElement>(null);
+  
+  // Theme context for styling
   const { theme } = useTheme();
 
+  /**
+   * Handle form input changes
+   * @param e - Input change event
+   */
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: { value: e.target.value, errorMessage: "" } });
   };
 
+  /**
+   * Validate form fields
+   * @returns Object with error messages for each field
+   */
+  const validateForm = () => {
+    const errors = { name: "", email: "", message: "" };
+    const lettersRegex = /^[a-zA-Z ]*$/;
+    const mailRegex = /^([_\-\.0-9a-zA-Z]+)@([_\-\.0-9a-zA-Z]+)\.([a-zA-Z]){2,7}$/;
+
+    // Name validation
+    if (!formData.name.value) {
+      errors.name = "Name is required";
+    } else if (!lettersRegex.test(formData.name.value)) {
+      errors.name = "Name should only contain letters and spaces";
+    }
+
+    // Email validation
+    if (!formData.email.value) {
+      errors.email = "Email is required";
+    } else if (!mailRegex.test(formData.email.value)) {
+      errors.email = "Please enter a valid email";
+    }
+
+    // Message validation
+    if (!formData.message.value) {
+      errors.message = "Message is required";
+    } else if (formData.message.value.length < 10) {
+      errors.message = "Message should be at least 10 characters";
+    }
+
+    return errors;
+  };
+
+  /**
+   * Handle form submission
+   * @param e - Form submit event
+   */
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    const obj = { name: "", email: "", message: "" };
-    const lettersregex = /^[a-zA-Z ]*$/;
-    const mailregex = /^([_\-\.0-9a-zA-Z]+)@([_\-\.0-9a-zA-Z]+)\.([a-zA-Z]){2,7}$/;
-
-    // Validation logic (remains unchanged)
-
-    // Temporary form data to hold error messages
+    
+    // Validate form fields
+    const errors = validateForm();
+    
+    // Update form state with validation errors
     const tempFormData = {
-      name: { value: formData.name.value, errorMessage: obj.name },
-      email: { value: formData.email.value, errorMessage: obj.email },
-      message: { value: formData.message.value, errorMessage: obj.message },
+      name: { value: formData.name.value, errorMessage: errors.name },
+      email: { value: formData.email.value, errorMessage: errors.email },
+      message: { value: formData.message.value, errorMessage: errors.message },
     };
-
+    
     setFormData({ ...tempFormData });
 
-    // Check for errors before sending
-    if (!obj.name && !obj.email && !obj.message) {
+    // Check for validation errors before sending
+    if (!errors.name && !errors.email && !errors.message) {
       // Reset form fields after successful submission
       setFormData({
         name: { value: "", errorMessage: "" },
@@ -60,7 +106,7 @@ export const Contact: NextPage = () => {
         const response = await emailjs.send(
           process.env.NEXT_PUBLIC_SERVICE_ID!,
           process.env.NEXT_PUBLIC_TEMPLATE_ID!,
-          formDataToSend,  // Use the prepared object here
+          formDataToSend,
           process.env.NEXT_PUBLIC_PUBLIC_KEY!
         );
 
@@ -69,7 +115,7 @@ export const Contact: NextPage = () => {
           toast.success("Message Sent!");
         }
       } catch (err) {
-        console.log(err);
+        console.error("Form submission error:", err);
         setLoading(false);
         toast.error("Form Submission Failed. Please send me an email!");
       }

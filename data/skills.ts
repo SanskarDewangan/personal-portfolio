@@ -1,3 +1,4 @@
+// Array of skill objects for the portfolio
 export const skills = [
   { uniqueId: 1, skill: "CPP", id: "5001", proficient: true, url: "", fieldType: "languages", image: {url: "/images/cpp.webp"} },
   { uniqueId: 2, skill: "JavaScript", id: "5002", proficient: true, url: "", fieldType: "languages", image: { url: "/images/js.webp" } },

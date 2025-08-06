@@ -1,8 +1,10 @@
+// Font face declaration for Circular Std font
 @font-face {
   font-family: Circular Std;
   src: url("../assets/CircularStd-Book.otf");
 }
 
+// Global reset and base styles
 * {
   padding: 0;
   margin: 0;
@@ -18,10 +20,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+// Remove default link styling
 a {
   text-decoration: none;
 }
 
+// CSS custom properties for light theme
 :root {
   --toastify-toast-width: 265px;
   --toastify-toast-min-height: 80px;
@@ -43,6 +47,7 @@ a {
   --skills-card-shadow: #eab308;
 }
 
+// CSS custom properties for dark theme
 [data-theme="dark"] {
   --primary-accent: #fbff00;
   --secondary-accent: #eab308;
@@ -60,12 +65,14 @@ a {
   --skills-card-shadow: #eab308;
 }
 
+// Mixin for image sizing
 @mixin imageSize($width, $height, $fit) {
   width: $width;
   height: $height;
   object-fit: $fit;
 }
 
+// Mixin for flexbox settings
 @mixin flexSettings($direction, $justify, $align) {
   display: flex;
   flex-direction: $direction;
@@ -73,11 +80,13 @@ a {
   align-items: $align;
 }
 
+// Mixin for section layout
 @mixin sectionLayout($padding, $background) {
   background-color: $background;
   padding: $padding;
 }
 
+// Mixin for heading layout
 @mixin headingLayout($fontSize, $textAlign, $marginBottom, $color) {
   font-size: $fontSize;
   text-align: $textAlign;
@@ -85,21 +94,25 @@ a {
   color: $color;
 }
 
+// Mixin for border with radius
 @mixin borderWithRadius($border, $borderRadius) {
   border: $border;
   border-radius: $borderRadius;
 }
 
+// Mixin for color and background
 @mixin colorWithBackground($color, $backgroundColor) {
   color: $color;
   background-color: $backgroundColor;
 }
 
+// Mixin for line transformation
 @mixin lineTransform($top, $transform) {
   top: $top;
   transform: $transform;
 }
 
+// Scroll to top button styles
 .scroll-up {
   @include imageSize(45px, 45px, contain);
   @include borderWithRadius(2px solid var(--primary-accent), 50%);
@@ -112,6 +125,7 @@ a {
   background: var(--background-two);
 }
 
+// Import component-specific styles
 @import "./navbar";
 @import "./about";
 @import "./jobs";

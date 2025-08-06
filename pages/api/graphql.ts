@@ -4,6 +4,7 @@ import { skills } from '../../data/skills';
 import { jobs } from '../../data/jobs';
 import { IProjects, ISkills, IJobs } from '../../typings';
 
+// GraphQL type definitions
 const typeDefs = gql`
   type Image { url: String }
   type Text { text: String }
@@ -13,6 +14,7 @@ const typeDefs = gql`
   type Query { projects: [Project], skills: [Skill], jobs: [Job] }
 `;
 
+// GraphQL resolvers
 const resolvers = {
   Query: {
     projects: () => projects,
@@ -21,12 +23,20 @@ const resolvers = {
   },
 };
 
+// Apollo Server instance
 const apolloServer = new ApolloServer({ typeDefs, resolvers });
 
+// Disable body parsing for GraphQL
 export const config = { api: { bodyParser: false } };
 
+// Apollo Server handler
 let apolloServerHandler: ReturnType<typeof apolloServer.createHandler> | null = null;
 
+/**
+ * GraphQL API handler
+ * @param req - Request object
+ * @param res - Response object
+ */
 export default async function handler(req: any, res: any) {
   if (!apolloServerHandler) {
     await apolloServer.start();

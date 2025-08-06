@@ -9,17 +9,31 @@ interface AnimatedSectionProps {
   direction?: 'up' | 'down' | 'left' | 'right';
 }
 
+/**
+ * AnimatedSection Component
+ * Wraps children with entrance animations based on scroll position
+ *
+ * @param children - Child elements to animate
+ * @param className - Additional CSS classes
+ * @param delay - Animation delay in seconds
+ * @param direction - Animation direction (up, down, left, right)
+ */
 export const AnimatedSection: React.FC<AnimatedSectionProps> = ({
   children,
   className = '',
   delay = 0,
   direction = 'up'
 }) => {
+  // Hook to detect when element is in view
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1
   });
 
+  /**
+   * Get initial position based on animation direction
+   * @returns Object with initial position and opacity
+   */
   const getInitialPosition = () => {
     switch (direction) {
       case 'up': return { y: 50, opacity: 0 };
@@ -30,6 +44,10 @@ export const AnimatedSection: React.FC<AnimatedSectionProps> = ({
     }
   };
 
+  /**
+   * Get animated position (final state)
+   * @returns Object with final position and opacity
+   */
   const getAnimatedPosition = () => {
     switch (direction) {
       case 'up': return { y: 0, opacity: 1 };
@@ -55,4 +73,4 @@ export const AnimatedSection: React.FC<AnimatedSectionProps> = ({
       {children}
     </motion.div>
   );
-}; 
+};

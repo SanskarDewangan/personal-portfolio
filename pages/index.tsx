@@ -23,13 +23,27 @@ interface IHomeProps {
   jobs: IJobs[];
 }
 
+/**
+ * Home Page Component
+ * Main portfolio page that displays all sections
+ *
+ * @param projects - Array of project objects
+ * @param skills - Array of skill objects
+ * @param jobs - Array of job objects
+ */
 const Home: NextPage<IHomeProps> = ({projects, skills, jobs }) => {
+  // Refs for section scrolling
   const projectsRef = useRef<HTMLElement>(null);
   const skillsRef = useRef<HTMLElement>(null);
   const experienceRef = useRef<HTMLElement>(null);
   const contactRef = useRef<HTMLElement>(null);
+  
+  // State for scroll to top button visibility
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
+  /**
+   * Effect to handle scroll visibility of scroll to top button
+   */
   useEffect(() => {
     const toggleVisibility = () => {
       if (window.pageYOffset > 500) {
@@ -44,6 +58,9 @@ const Home: NextPage<IHomeProps> = ({projects, skills, jobs }) => {
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
+  /**
+   * Scroll to top of the page
+   */
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -51,6 +68,10 @@ const Home: NextPage<IHomeProps> = ({projects, skills, jobs }) => {
     });
   };
 
+  /**
+   * Handle navigation item clicks and scroll to respective sections
+   * @param item - Section identifier
+   */
   const handleNavItemClick = (item: string) => {
     let scrollObject = {};
     switch (item) {
@@ -98,6 +119,7 @@ const Home: NextPage<IHomeProps> = ({projects, skills, jobs }) => {
 
   return (
     <div>
+      {/* Page head with metadata */}
       <Head>
         <title>Sanskar Dewangan</title>
         <meta
@@ -108,49 +130,60 @@ const Home: NextPage<IHomeProps> = ({projects, skills, jobs }) => {
         <link rel="icon" href="/favicon.png" />
       </Head>
 
+      {/* Main content */}
       <main>
+        {/* Navigation bar */}
         <Navbar onNavItemClick={handleNavItemClick} />
 
+        {/* About section */}
         <AnimatedSection>
           <section className={SECTION.ABOUT}>
             <About />
           </section>
         </AnimatedSection>
 
+        {/* Performance dashboard */}
         <AnimatedSection>
           <PerformanceDashboard />
         </AnimatedSection>
 
+        {/* Experience section */}
         <section className="experience" ref={experienceRef}>
           <AnimatedSection>
             <Experience jobs={jobs} />
           </AnimatedSection>
         </section>
 
+        {/* Projects section */}
         <section className={SECTION.PROJECTS} ref={projectsRef}>
           <AnimatedSection>
             <Projects projects={projects} />
           </AnimatedSection>
         </section>
 
+        {/* Skills section */}
         <section className={SECTION.SKILLS} ref={skillsRef}>
           <AnimatedSection>
             <Skills skills={skills} />
           </AnimatedSection>
         </section>
 
+        {/* Contact section */}
         <section className="contact" ref={contactRef}>
           <AnimatedSection>
             <Contact />
           </AnimatedSection>
         </section>
 
+        {/* Footer */}
         <AnimatedSection>
           <Footer />
         </AnimatedSection>
 
+        {/* Scroll to top button */}
         {isVisible && <Image src={ScrollUp.src} alt="Scroll Up" className="scroll-up" onClick={scrollToTop} width={40} height={40} style={{ cursor: 'pointer' }} />}
 
+        {/* Toast notifications container */}
         <ToastContainer
           position="top-right"
           autoClose={3500}

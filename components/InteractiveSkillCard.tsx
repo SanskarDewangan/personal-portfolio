@@ -7,23 +7,30 @@ interface InteractiveSkillCardProps {
   index: number;
 }
 
+/**
+ * InteractiveSkillCard Component
+ * Displays a skill with interactive animations and proficiency indicator
+ *
+ * @param skill - Skill object containing skill details
+ * @param index - Index for animation delay
+ */
 export const InteractiveSkillCard: React.FC<InteractiveSkillCardProps> = ({ skill, index }) => {
   return (
     <motion.div
       className="skills_box_container_row_card interactive"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ 
-        delay: index * 0.1, 
+      transition={{
+        delay: index * 0.1,
         duration: 0.5,
         ease: [0.25, 0.46, 0.45, 0.94]
       }}
-      whileHover={{ 
+      whileHover={{
         y: -8,
         scale: 1.02,
         transition: { duration: 0.2 }
       }}
-      whileTap={{ 
+      whileTap={{
         scale: 0.98,
         transition: { duration: 0.1 }
       }}
@@ -36,7 +43,7 @@ export const InteractiveSkillCard: React.FC<InteractiveSkillCardProps> = ({ skil
       >
         <motion.div
           className="skill-card-front"
-          style={{ 
+          style={{
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
@@ -45,26 +52,28 @@ export const InteractiveSkillCard: React.FC<InteractiveSkillCardProps> = ({ skil
             overflow: 'hidden'
           }}
         >
+          {/* Skill icon with hover animation */}
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: index * 0.1 + 0.3, duration: 0.4 }}
-            whileHover={{ 
+            whileHover={{
               scale: 1.1,
               rotate: 5,
               transition: { duration: 0.2 }
             }}
           >
-            <Image 
-              src={skill?.image?.url} 
-              alt={skill?.skill} 
-              width={50} 
+            <Image
+              src={skill?.image?.url}
+              alt={skill?.skill}
+              width={50}
               height={50}
               style={{ marginBottom: '10px' }}
             />
           </motion.div>
           
-          <motion.p 
+          {/* Skill name */}
+          <motion.p
             style={{ fontSize: '14px', textAlign: 'center' }}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -81,7 +90,7 @@ export const InteractiveSkillCard: React.FC<InteractiveSkillCardProps> = ({ skil
             transition={{ delay: index * 0.1 + 0.6, duration: 0.8 }}
             style={{
               height: '3px',
-              background: skill?.proficient 
+              background: skill?.proficient
                 ? 'linear-gradient(90deg, var(--secondary-accent), var(--primary-accent))'
                 : 'linear-gradient(90deg, #e0e0e0, #bdbdbd)',
               borderRadius: '2px',
@@ -90,13 +99,14 @@ export const InteractiveSkillCard: React.FC<InteractiveSkillCardProps> = ({ skil
               overflow: 'hidden'
             }}
           >
+            {/* Animated glow effect */}
             <motion.div
               className="skill-level-glow"
-              animate={{ 
+              animate={{
                 x: skill?.proficient ? [0, 100, 0] : [0, 50, 0],
                 opacity: [0.5, 1, 0.5]
               }}
-              transition={{ 
+              transition={{
                 duration: 2,
                 repeat: Infinity,
                 ease: "easeInOut"
@@ -116,4 +126,4 @@ export const InteractiveSkillCard: React.FC<InteractiveSkillCardProps> = ({ skil
       </motion.div>
     </motion.div>
   );
-}; 
+};

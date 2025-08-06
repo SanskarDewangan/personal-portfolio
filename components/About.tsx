@@ -19,14 +19,14 @@ export const About: NextPage = () => {
         {/* Name with typing animation */}
         <AnimatedSection delay={0.2}>
           <h1 className="about_left_head">
-            Hi, I'm <TypingAnimation text="Sanskar Dewangan" speed={150} />
+            Hi, I&#39;m <TypingAnimation text="Sanskar Dewangan" speed={150} />
           </h1>
         </AnimatedSection>
         
         {/* About text */}
         <AnimatedSection delay={0.4}>
           <p className="about_left_text">
-          I'm a recent Computer Science graduate with a Bachelor of Engineering in Computer Science and Engineering from Sir MVIT, Bengaluru. I have a strong foundation in software development, data structures, and system design, with hands-on experience building full-stack applications and solving real-world problems through clean, efficient code.
+          I&#39;m a recent Computer Science graduate with a Bachelor of Engineering in Computer Science and Engineering from Sir MVIT, Bengaluru. I have a strong foundation in software development, data structures, and system design, with hands-on experience building full-stack applications and solving real-world problems through clean, efficient code.
           <br/>
           <br />
           Driven by curiosity and a passion for technology, I continuously strive to improve my skills and stay updated with industry best practices. I&#39;m actively seeking a Software Engineer role where I can contribute to impactful projects, collaborate with talented teams, and grow into a well-rounded developer.

@@ -122,6 +122,21 @@
       flex-basis: 0;
       position: absolute;
       right: 25px;
+      left: auto;
+      max-width: calc(100% - 110px);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 16px;
+
+      span {
+        margin-right: 10px;
+      }
+
+      img {
+        @include imageSize(28px, 28px, contain);
+        padding: 4px;
+      }
     }
     &_list {
       display: none;
@@ -130,6 +145,7 @@
 
   .menu {
     display: block;
+    left: 15px;
   }
 
   .sidebar {

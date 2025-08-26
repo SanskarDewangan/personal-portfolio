@@ -3,7 +3,7 @@ import { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import { ThreeDots } from "react-loader-spinner";
 import { toast } from "react-toastify";
-import Gmail from "../assets/gmail.webp";
+import Outlook from "../assets/outlook.webp";
 import { IFormData } from "../typings";
 import Image from "next/image";
 import { useTheme } from "next-themes";
@@ -126,7 +126,7 @@ export const Contact: NextPage = () => {
     <>
       <h1 className="contact_heading">Contact Me</h1>
       <div className="contact_email">
-        <Image src={Gmail.src} alt="Gmail" width={28} height={28} /> d.sanskar014@gmail.com
+        <Image src={Outlook.src} alt="Outlook" width={28} height={28} /> sanskar.dewangan14@outlook.com
       </div>
       {!loading ? (
         <form className="contact_form" autoComplete="off" ref={form}>

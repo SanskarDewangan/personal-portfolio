@@ -8,8 +8,8 @@ export const jobs: IJobs[] = [
     company: "Accenture Solutions Private Limited",
     designation: "Associate Software Engineer",
     from: "2025-02-21",
-    to: "2026-08-01", // remove if still working
-    logo: { url: "/images/accenture.png" }, // optional
+    to: "2026-06-21", 
+    logo: { url: "/images/accenture.png" }, 
     companyUrl: "https://www.accenture.com/in-en",
     companyLinkedin: "https://www.linkedin.com/company/accentureindia/posts/?feedView=all"
   },
